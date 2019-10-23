@@ -454,11 +454,17 @@ function _getUnit(modality, showHounsfieldUnits) {
 function _createTextBoxContent(
   context,
   isColorImage,
-  { area, mean, stdDev, min, max, meanStdDevSUV },
+  { area, mean, stdDev, min, max, meanStdDevSUV, textContent, hideStats },
   modality,
   hasPixelSpacing,
   options = {}
 ) {
+  if (textContent) {
+    return textContent;
+  } else if (hideStats) {
+    return [];
+  }
+
   const showMinMax = options.showMinMax || false;
   const textLines = [];
 
